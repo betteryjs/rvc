@@ -1,0 +1,19 @@
+.container {
+    padding: 20px;
+}
+.logo-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.logo-title img {
+    margin-right: 10px;
+    height: 50px;
+    width: auto;
+}
+
+h1 {
+    text-align: center;
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剩余价值计算器</title>
+    <meta name="description" content="使用我们的工具，可以帮你精确计算产品服务的剩余价值和溢价，助您在C2C交易中作出明智的决策！输入续费金额、交易金额和日期，即可获取详细信息。支持多种支付周期和货币选项，并提供分享功能。">
+    <link rel="stylesheet" href="bootstrap.min.css">  
+    <link rel="stylesheet" href="px.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 logo-title">
+            <a href="#" onclick="location.reload();">
+               <!-- <img src="https://img.gwwc.net/logo.png" alt="Logo"> -->
+                剩余价值计算器
+            </a>
+        </h1>
+        <form id="calculatorForm">
+            <div class="form-group">
+                <label for="dataDate">汇率数据日期</label>
+                <input type="text" class="form-control" id="dataDate" name="dataDate" disabled>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label for="purchaseCurrency">续费货币类型</label>
+                    <select class="form-control" id="purchaseCurrency" name="purchaseCurrency">
+                        <option value="CNY">人民币 (CNY)</option>
+                        <option value="USD">美元 (USD)</option>
+                        <option value="EUR">欧元 (EUR)</option>
+                        <option value="GBP">英镑 (GBP)</option>
+                        <option value="CAD">加元 (CAD)</option>
+                        <option value="RUB">卢布 (RUB)</option>
+                        <option value="AUD">澳元 (AUD)</option>
+                        <option value="JPY">日元 (JPY)</option>
+                        <option value="KRW">韩元 (KRW)</option>
+                        <option value="HKD">港币 (HKD)</option>
+                        <option value="TWD">新台币 (TWD)</option>
+                        <option value="BTC">比特币 (BTC)</option>
+                        <option value="ETH">以太币 (ETH)</option>
+                        <option value="DOGE">狗狗币 (DOGE)</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="exchangeRate">对人民币的汇率</label>
+                    <input type="number" class="form-control" id="exchangeRate" name="exchangeRate" step="0.0001" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label for="tradeCurrency">交易货币类型</label>
+                    <select class="form-control" id="tradeCurrency" name="tradeCurrency">
+                        <option value="CNY">人民币 (CNY)</option>
+                        <option value="USD">美元 (USD)</option>
+                        <option value="EUR">欧元 (EUR)</option>
+                        <option value="GBP">英镑 (GBP)</option>
+                        <option value="CAD">加元 (CAD)</option>
+                        <option value="RUB">卢布 (RUB)</option>
+                        <option value="AUD">澳元 (AUD)</option>
+                        <option value="JPY">日元 (JPY)</option>
+                        <option value="KRW">韩元 (KRW)</option>
+                        <option value="HKD">港币 (HKD)</option>
+                        <option value="TWD">新台币 (TWD)</option>
+                        <option value="BTC">比特币 (BTC)</option>
+                        <option value="ETH">以太币 (ETH)</option>
+                        <option value="DOGE">狗狗币 (DOGE)</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="tradeExchangeRate">对人民币的汇率</label>
+                    <input type="number" class="form-control" id="tradeExchangeRate" name="tradeExchangeRate" step="0.0001" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="currentDate">当前日期</label>
+                    <input type="date" class="form-control" id="currentDate" name="currentDate" required>
+                </div>
+                <div class="form-group col">
+                    <label for="expiryDate">到期日期</label>
+                    <input type="date" class="form-control" id="expiryDate" name="expiryDate" required>
+                </div>  
+            </div>          
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="purchasePrice">续费金额</label>
+                    <input type="number" class="form-control" id="purchasePrice" name="purchasePrice" step="0.01" required>
+                </div>
+                <div class="form-group col">
+                    <label for="tradePrice">交易金额</label>
+                    <input type="number" class="form-control" id="tradePrice" name="tradePrice" step="0.01" required>
+                </div>
+                <div class="form-group col">
+                    <label for="paymentFrequency">续费周期</label>
+                    <select class="form-control" id="paymentFrequency" name="paymentFrequency" required>
+                        <option value="yearly">年付</option>
+                        <option value="monthly">月付</option>
+                        <option value="quarterly">季付</option>
+                        <option value="halfyearly">半年付</option>
+                        <option value="two-yearly">两年付</option>
+                        <option value="three-yearly">三年付</option>
+                        <option value="five-yearly">五年付</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary mr-1" onclick="calculateRemainingValue()">计算剩余价值</button>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary" onclick="takeScreenshot()">获取分享链接</button>
+                </div>
+            </div>
+        </form>
+        <div class="result mt-4" style="display: none;">
+            <h3 style="font-size: 1.5rem;">计算结果：</h3>    
+            <div class="row">
+                <div class="col">
+                    <p>续费金额: ￥<span id="resultPurchasePriceCNY"></span></p>
+                    <p>剩余价值: ￥<span id="resultRemainingValueCNY"></span></p>
+                    <p>剩余天数: <span id="resultRemainingDays"></span>天 (<span id="resultRemainingMonths"></span>个月余<span id="resultRemainingDay"></span>天)</p>
+                </div>
+                <div class="col">
+                    <p>交易金额: ￥<span id="resultTradePriceCNY"></span></p>
+                    <p>溢价金额: ￥<span id="resultPremiumCNY"></span></p>
+                    <p>溢价幅度: <span id="resultPremiumPercent"></span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <!--<p>购买建议: <span id="resultAdvice"></span></p>-->
+                    <p style="display: none;">购买建议: <span id="resultAdvice"></span></p>
+                </div>  
+            </div>
+        </div>
+        <div id="toastContainer" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+        <div id="screenshotResult" class="mt-3"></div>
+        <div id="loading" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <!-- 无非必要，请不要去除广告，毕竟此广告不影响美观，谢谢！ -->
+    <footer style="text-align: center; padding: 20px;">
+<!--        <a href="https://www.dmit.io/aff.php?aff=11932">-->
+<!--            <img src="dmit.png" width="110" height="50" alt="IMG" />-->
+<!--        </a>-->
+
+    </footer>
+
+
+
+
+    <script src="jquery-3.5.1.slim.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="html2canvas.min.js"></script>
+    <script src="px.js"></script>     
+</body>
+</html>
