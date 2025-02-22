@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # 定义保存文件的路径
 OUTPUT_FILE="/usr/share/nginx/html/exchange_rates.json"
