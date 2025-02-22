@@ -65,12 +65,9 @@ function takeScreenshot() {
                 }).catch(error => {
                 // document.getElementById('screenshotResult').textContent = '上传失败！';
                 console.error('Error:', error);
-                navigator.clipboard.writeText(imageUrl).then(() => {
-                    showToast('图片分享链接已复制到剪切板');
-                }, err => {
-                    showToast('复制到剪切板失败');
-                });
                 loadingDiv.style.display = 'none';
+                navigator.clipboard.writeText(imageUrl);
+
             });
 
         });
