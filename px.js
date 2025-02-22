@@ -62,8 +62,12 @@ function takeScreenshot() {
 
                     loadingDiv.style.display = 'none';
                     uploadButton.style.visibility = 'visible';
-                })
-            ;
+                }).catch(error => {
+                // document.getElementById('screenshotResult').textContent = '上传失败！';
+                console.error('Error:', error);
+                loadingDiv.style.display = 'none';
+            });
+
         });
     });
 }
