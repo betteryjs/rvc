@@ -61,7 +61,9 @@ services:
         ports:
             - '9000:80'
 ```
-
+```shell
+sudo docker-compose up -d
+```
 ## 在Nginx proxy manager 面板进行反向代理
 
 ## 展示
