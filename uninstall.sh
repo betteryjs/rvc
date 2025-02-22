@@ -3,8 +3,9 @@
 
 cd rvc
 sudo docker-compose down
-sudo docker rmi reg.naloong.de/library/rvcs
 rm -rf rvc
+sudo docker rmi reg.naloong.de/library/rvcs
+
 
 
 
