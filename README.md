@@ -25,9 +25,7 @@ sudo curl -s https://raw.githubusercontent.com/betteryjs/rvc/refs/heads/master/i
 
 # 一键卸载
 ```shell
-
 sudo curl -s https://raw.githubusercontent.com/betteryjs/rvc/refs/heads/master/uninstall.sh | bash
-
 
 ```
 
