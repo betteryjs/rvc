@@ -17,6 +17,7 @@
 
 
 # 一键安装
+> 默认使用9090端口
 ```shell
 sudo curl -s https://raw.githubusercontent.com/betteryjs/rvc/refs/heads/master/install.sh | bash
 
