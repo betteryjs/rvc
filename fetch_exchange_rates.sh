@@ -7,7 +7,7 @@ OUTPUT_FILE="/usr/share/nginx/html/exchange_rates.json"
 echo "$(date '+%Y/%m/%d %H:%M:%S GMT+8') - 开始下载汇率数据..."
 
 # 使用 curl 下载汇率数据
-curl -s https://api.exchangerate-api.com/v4/latest/CNY > /tmp/temp_rates.json
+curl -s https://gwwc.github.io/mjj/exchange_rates.json > /tmp/temp_rates.json
 if [ $? -eq 0 ]; then
     echo "$(date '+%Y/%m/%d %H:%M:%S GMT+8') - 汇率数据下载成功。"
 else

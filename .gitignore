@@ -164,5 +164,6 @@ cython_debug/
 docker_buildx.sh
 submit.sh
 px.js.bak
+fetch_exchange_rates.sh.bak
 
 
