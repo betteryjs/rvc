@@ -30,8 +30,8 @@ sudo curl -s https://raw.githubusercontent.com/betteryjs/rvc/refs/heads/master/u
 ```
 
 
-
-# 安装 `docker`
+# 手动安装
+## 安装 `docker`
 ```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
@@ -39,18 +39,17 @@ systemctl enable docker
 systemctl start docker
 rm get-docker.sh
 ```
-# 安装`docker-compose`
+## 安装`docker-compose`
 ```shell
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-# 配置
+## 配置
 ```shell
 mkdir rvc
 vim docker-compose.yml 
 ```
-
 ```shell
 
 version: '3'
@@ -63,7 +62,10 @@ services:
             - '9000:80'
 ```
 
-# 在Nginx proxy manager 面板进行反向代理
+## 在Nginx proxy manager 面板进行反向代理
+
+## 展示
+![](./images/rvc.png)
 
 
 
