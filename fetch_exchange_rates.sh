@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # 定义保存文件的路径
 OUTPUT_FILE="/usr/share/nginx/html/exchange_rates.json"
@@ -7,7 +7,7 @@ OUTPUT_FILE="/usr/share/nginx/html/exchange_rates.json"
 echo "$(date '+%Y/%m/%d %H:%M:%S GMT+8') - 开始下载汇率数据..."
 
 # 使用 curl 下载汇率数据
-curl -s https://gwwc.github.io/mjj/exchange_rates.json > /tmp/temp_rates.json
+curl -s https://api.exchangerate-api.com/v4/latest/CNY > /tmp/temp_rates.json
 if [ $? -eq 0 ]; then
     echo "$(date '+%Y/%m/%d %H:%M:%S GMT+8') - 汇率数据下载成功。"
 else
@@ -18,11 +18,11 @@ fi
 # 获取当前时间（GMT+8）
 CURRENT_TIME=$(TZ="GMT-8" date +"%Y/%m/%d %H:%M GMT+8")
 
-# 使用 jq 处理 JSON 数据并保存为指定格式
+# 提取汇率数据并生成指定格式
 jq --arg date "$CURRENT_TIME" '
 {
     date: $date,
-    rates: .rates
+    rates: .rates | to_entries | map({key: .key, value: (1 / .value)}) | from_entries
 }' /tmp/temp_rates.json > $OUTPUT_FILE
 
 if [ $? -eq 0 ]; then

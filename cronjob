@@ -1,1 +1,1 @@
-0 12 * * *  /usr/local/bin/fetch_exchange_rates.sh >> /var/log/cron/cron.log 2>&1
+0 * * * *  /usr/local/bin/fetch_exchange_rates.sh >> /var/log/cron/cron.log 2>&1
