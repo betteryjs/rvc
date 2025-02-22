@@ -1,8 +1,3 @@
-
-
-
-
-
 # 赞助信息
 
 <div style="text-align: center;">
@@ -21,6 +16,21 @@
 我们非常感谢[Vmiss](https://www.vmiss.com/) [Yxvm](https://yxvm.com/) [慈云数据](https://www.zovps.com/aff/VWSIBCGP)提供了支持本项目所需的网络基础设施。
 
 
+# 一键安装
+```shell
+sudo curl -s https://raw.githubusercontent.com/betteryjs/rvc/refs/heads/master/install.sh | bash
+
+```
+
+# 一键卸载
+```shell
+
+sudo curl -s https://raw.githubusercontent.com/betteryjs/rvc/refs/heads/master/uninstall.sh | bash
+
+```
+
+
+
 # 安装 `docker`
 ```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
@@ -35,9 +45,8 @@ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-# 运行
+# 配置
 ```shell
-
 mkdir rvc
 vim docker-compose.yml 
 ```
@@ -52,15 +61,12 @@ services:
         restart: unless-stopped
         ports:
             - '9000:80'
-
 ```
 
+# 在Nginx proxy manager 面板进行反向代理
 
 
 
 
-```shell
 
-sudo curl -s https://static-file-global.353355.xyz/goedge/edge-admin-install.sh | bash
 
-```

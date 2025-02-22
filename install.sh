@@ -34,8 +34,8 @@ docker-compose --version
 
 mkdir rvc
 cd rvc
-wget
-
+wget https://raw.githubusercontent.com/betteryjs/rvc/refs/heads/master/docker-compose.yml
+sudo docker-compose up -d
 
 
 
