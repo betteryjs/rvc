@@ -1,5 +1,5 @@
 # 使用官方的 Nginx 镜像作为基础镜像
-FROM nginx:alpine
+FROM --platform=linux/amd64 nginx:alpine
 
 # 安装依赖：curl 和 jq
 RUN apk add --no-cache curl jq
@@ -27,3 +27,5 @@ RUN mkdir -p /var/log/cron
 
 # 启动 cron 和 Nginx
 CMD (crond -f &) && nginx -g "daemon off;"
+
+
