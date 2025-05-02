@@ -15,7 +15,7 @@ docker login reg.naloong.de
 
 
 #配置 Docker 多平台支持
-docker run --privileged --rm tonistiigi/binfmt --install all
+#docker run --privileged --rm tonistiigi/binfmt --install all
 
 # 构建并推送 amd64 镜像
 docker build --platform linux/amd64 -t reg.naloong.de/library/rvc:amd64 .

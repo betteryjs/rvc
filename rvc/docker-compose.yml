@@ -1,8 +1,0 @@
-version: '3'
-services:
-    checkip:
-        image: reg.naloong.de/library/rvc:latest
-        container_name: rvc
-        restart: unless-stopped
-        ports:
-            - '9000:80'

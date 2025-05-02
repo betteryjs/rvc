@@ -1,7 +1,8 @@
 # 使用官方的 Nginx 镜像作为基础镜像
 #FROM --platform=linux/amd64 nginx:alpine
 # 声明目标平台变量
-FROM nginx:alpine
+ARG TARGETARCH
+FROM nginx:alpine-${TARGETARCH}
 
 # 安装依赖：curl 和 jq
 RUN apk add --no-cache curl jq
