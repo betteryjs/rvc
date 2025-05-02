@@ -55,7 +55,7 @@ vim docker-compose.yml
 version: '3'
 services:
     checkip:
-        image: reg.naloong.de/library/rvcs:latest
+        image: reg.naloong.de/library/rvc:latest
         container_name: rvc
         restart: unless-stopped
         ports:
