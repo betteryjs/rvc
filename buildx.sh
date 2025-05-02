@@ -6,7 +6,9 @@ IMAGE_NAME="$REGISTRY/library/rvc"
 IMAGE_VERSION="latest"
 
 
-docker rmi reg.naloong.de/library/rvc
+docker login $REGISTRY
+
+
 
 # 初始化多架构构建环境
 docker buildx create --use --name multiarch-builder >/dev/null 2>&1
